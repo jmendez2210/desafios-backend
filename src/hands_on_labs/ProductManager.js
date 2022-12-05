@@ -52,7 +52,7 @@ class ProductManager {
   };
 
 
-  //Prueba  para ejercicio comentarios
+  //Prueba ejercicios
  
 
 
