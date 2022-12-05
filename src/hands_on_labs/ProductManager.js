@@ -52,7 +52,7 @@ class ProductManager {
   };
 
 
-  //Prueba para el producto
+  //Prueba 
  
 
 
