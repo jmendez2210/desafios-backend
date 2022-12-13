@@ -102,8 +102,7 @@ class ProductManager{
 
 
 
-// PRUEBAS 
-
+// PRUEBAS  para probar el producto 
 
 let fileName = "./Products.JSON";
 let productos = new ProductManager(fileName);
