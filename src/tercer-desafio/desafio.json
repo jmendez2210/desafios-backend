@@ -1,0 +1,38 @@
+[
+	{
+		"marca": "Peugeot",
+		"modelo": "new 3008",
+		"price": 450,
+		"thumbnail": "sin imagen",
+		"code": "2022",
+		"stock": 25,
+		"id": 1
+	},
+	{
+		"marca": "Peugeot",
+		"modelo": "new 3008",
+		"price": 200,
+		"thumbnail": "sin imagen",
+		"code": "2023",
+		"stock": 5,
+		"id": 2
+	},
+	{
+		"marca": "Peugeot",
+		"modelo": "new 3008",
+		"price": 200,
+		"thumbnail": "sin imagen",
+		"code": "2024",
+		"stock": 10,
+		"id": 3
+	},
+	{
+		"marca": "Peugeot",
+		"modelo": "new 3008",
+		"price": 300,
+		"thumbnail": "sin imagen",
+		"code": "2025",
+		"stock": 25,
+		"id": 4
+	}
+]
