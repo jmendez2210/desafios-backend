@@ -1,0 +1,19 @@
+{
+  "name": "tercer-desafio",
+  "version": "1.0.0",
+  "description": "desafio 3",
+  "main": "ProductManager.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./ProductManager.js",
+    "dev": "node ./ProductManager.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "dependencies": {
+    "moment": "^2.29.4"
+  },
+  "devDependencies": {}
+}
