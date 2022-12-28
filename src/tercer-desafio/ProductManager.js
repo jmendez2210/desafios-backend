@@ -72,7 +72,7 @@ class ProductManager {
 // Testeo
 //
 
-const manager = new ProductManager('./desafio.json')
+// const manager = new ProductManager('./desafio.json')
 // manager.addProduct('Peugeot', 'new 3008', 450, 'sin imagen', '2022', 25)
 // manager.addProduct('Peugeot', 'new 3008', 200, 'sin imagen', '2023', 5)
 // manager.addProduct('Peugeot', 'new 3008', 200, 'sin imagen', '2024', 10)

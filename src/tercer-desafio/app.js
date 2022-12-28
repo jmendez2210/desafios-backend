@@ -5,7 +5,7 @@ app.use(express.urlencoded({extended:true}))
 
 
 app.get('/', (req,res) => {
-  res.send('Bienvenido')
+  res.send('<h1>Bienvenido  mi nuevo server</h1')
 })
 
 app.get('/products',  (req,res) => {
@@ -15,12 +15,12 @@ app.get('/products',  (req,res) => {
      res.json(ProductManager.getProducts())
   } else {
      const arrayOriginal = ProductManager.getProducts()
-    let arrayConLimite = arrayOriginal.slice(0,limit) 
-    res.json(arrayConLimite)
+    let limitado = arrayOriginal.slice(0,limit) 
+    res.json(limitado)
   }
  } catch (error) {
    console.log("Error", error)
-   res.send("Ha ocurrido un error")
+   res.send("Se ha presentado un error")
  }
   
 })
