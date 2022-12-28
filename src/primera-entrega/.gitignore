@@ -2,12 +2,9 @@
 
 # dependencies
 /node_modules
+
 /.pnp
 .pnp.js
-/desafios-genericos
-/hands_on_lbs-Clase 6
-/Clase-8
-/ejemplos
 
 # testing
 /coverage
