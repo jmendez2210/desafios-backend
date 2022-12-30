@@ -5,7 +5,7 @@ import ProductManager from '../utils/ProductManager.js'
 
 const router = Router()
 
-// METODO GET PARA LISTAR PRODUCTOS
+// METODO GET PARA LISTAR PRODUCTOS MEDIANTE ENDPOINT
 router.get('/', (req, res) => {
   let limit = parseInt(req.query.limit)
   try {
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
   }
 })
 
-//METODO PARA OBTENER PRODUCTO POR ID
+//METODO PARA OBTENER PRODUCTO POR ID MEDIANTE ENDPOINT
 router.get('/:pid', async (req, res) => {
   let pid = parseInt(req.params.pid);
   let response = await ProductManager.getElementById(pid)
@@ -48,7 +48,7 @@ router.delete('/:pid', async (req, res) => {
   let pid = parseInt(req.params.pid)
   await ProductManager.deleteProduct(pid) 
   ? res.status(200).json({ info: "El Producto se ha Eliminado!" })
-  : res.status(400).json({ error: "El producto no ha sido encontrado por su id" })
+  : res.status(400).json({ error: "El producto no ha sido encontrado por su id, favor intentar nuevamente con un codigo existente" })
 })
 
 export default router;
