@@ -1,0 +1,89 @@
+<div>
+<h1>Trabajando con WebSocket</h1>
+<form  >
+
+
+Title <input id="title"  type="text" name="title" required></input>
+Description <input id="description"  type="text" name="description" required></input>
+Category <input id="category"  type="text" name="category" required></input>
+Price <input id="price"  type="text" name="price" required ></input>
+Stock <input id="stock"  type="text" name="stock" required ></input>
+</form>
+
+<button id="send">Enviar</button>
+
+
+<h2>Historial de productos por webSocket</h2>
+  <table>
+  <thead>
+<tr>
+
+<td>Nombre</td>
+<td>Descripcion</td>
+<td>Categoria</td>
+<td>Precio</td>
+<td>Stock</td>
+
+
+
+
+</tr>
+
+</thead>
+
+
+      <tbody id="history">
+      </tbody>
+  </table>
+
+
+  </div>
+
+<script src="/socket.io/socket.io.js"></script>
+  <script src="/js/index.js"></script>
+
+
+
+<script>
+
+const socket = io("http://localhost:8080")
+let arrayProductos = []
+document.getElementById("send").addEventListener("click", postProduct)
+
+function postProduct(event)  {
+  event.preventDefault()
+  let product = {
+  "title" : document.getElementById("title").value,
+  "description" : document.getElementById("description").value,
+  "categoria" : document.getElementById("category").value,
+  "price" : document.getElementById("price").value,
+  "stock" : document.getElementById("stock").value,
+  }
+
+  socket.emit("newProduct", product)
+
+}
+
+function eliminarProducto(id) {
+  socket.emit("eliminarProducto", id)
+}
+
+socket.on("arrayProductos", data => {
+  let historial = document.getElementById("history")
+  historial.innerHTML = ""
+
+  data.map(element => {
+    historial.innerHTML += `
+                    <tr>
+                    <td> ${element.title} </td>
+                    <td>${element.description}</td>
+                    <td>${element.categoria}</td>
+                    <td>$ ${element.price}</td>
+                    <td>${element.stock} Unidades</td>
+                    </tr>
+                    <button onclick="eliminarProducto(${element.id})">Eliminar</button>
+    `
+  })
+})
+
+</script>
