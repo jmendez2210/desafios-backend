@@ -17,7 +17,7 @@ app.use(cookieParser());
 app.use(
   session({
     store: MongoStore.create({
-      mongoUrl: "mongodb+srv://jorge:admin@coderhouse.o3psgll.mongodb.net/login",
+      mongoUrl: "mongodb+srv://jorge:<password>@coderhouse.o3psgll.mongodb.net/?retryWrites=true&w=majority",
       mongoOptions: {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -31,7 +31,7 @@ app.use(
 );
 
 mongoose.set('strictQuery', false)
-mongoose.connect("mongodb+srv://jorge:admin@coderhouse.o3psgll.mongodb.net/login" )
+mongoose.connect("mongodb+srv://jorge:<password>@coderhouse.o3psgll.mongodb.net/?retryWrites=true&w=majority" )
   .then(() => console.log("Connected to MongoDB"))
 
 app.engine('hbs', handlebars.engine({
