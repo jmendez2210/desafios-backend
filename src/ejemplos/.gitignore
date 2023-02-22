@@ -1,13 +1,26 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
 .pnp.js
-/desafios-genericos
-/hands_on_lbs-Clase 6
+/node_modules/
+/Clase-6
 /Clase-8
-/ejemplos
+/Clase-9
+/Clase-10
+/Clase-11
+/Clase-12
+/Clase-13
+/Clase-14
+/Clase-15
+/Clase-16
+/Clase-17
+/Clase-18
+/Clase-19
+/Clase-20
+/clase_21
+/clase_22
+/clase_23
+/after_class
 
 # testing
 /coverage
