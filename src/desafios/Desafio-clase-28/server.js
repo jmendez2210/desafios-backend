@@ -55,7 +55,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 // APLICACION DE BASE DE DATOS CON MONGOOSE 
-mongoose.set('strictQuery', false)
+mongoose.set('strictQuery', true)
 mongoose.connect(config.MONGO_URI, (error) => {
   console.log('Connected to DB')
   if (error) {
