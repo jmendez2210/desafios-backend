@@ -11,11 +11,11 @@ import authorization from "../utils/autorization.js";
 
 const router = Router()
 
-router.get('/', productsController.getProducts) // ✅
-router.get('/:pid', productsController.getProductById)// ✅
+router.get('/', productsController.getProducts) 
+router.get('/:pid', productsController.getProductById)
 router.post('/', passportCall('jwt'), authorization(['admin']), passport.authenticate('jwt', { session: false }), uploader.single('thumbnail'), productsController.createProduct)
-router.put('/:pid', passportCall('jwt'), authorization(['admin']), passport.authenticate('jwt', { session: false }), productsController.editProduct)// ✅
-router.delete('/:pid', passportCall('jwt'), authorization(['admin']), passport.authenticate('jwt', { session: false }), productsController.deleteProduct)// ✅
+router.put('/:pid', passportCall('jwt'), authorization(['admin']), passport.authenticate('jwt', { session: false }), productsController.editProduct)
+router.delete('/:pid', passportCall('jwt'), authorization(['admin']), passport.authenticate('jwt', { session: false }), productsController.deleteProduct)
 
 
 export default router;

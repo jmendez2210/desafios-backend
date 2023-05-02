@@ -11,30 +11,42 @@ import passport from 'passport'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import config from './src/config/config.js'
+import errorHandler from './src/middlewares/errors/index.js'
+import { addLogger } from './src/utils/logger.js'
 
 
 const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+
 // Inicializacion de websocket por lado de servidor
-const httpServer = app.listen(config.PORT, () => console.log(`Escuchando en el puerto ${config.PORT}`))
+const httpServer = app.listen(3000, () => console.log(`Escuchando en el puerto ${config.PORT}`))
 export const io = new Server(httpServer)
 
 
-// CONFIGURACION DE HANDLEBARS  
+// CONFIGURACION DE HANDLEBARS 
 app.engine('hbs', handlebars.engine({
   extname: 'hbs',
   defaultLayout: 'main',
   handlebars: allowInsecurePrototypeAccess(Handlebars)
 }))
+
+
+// Midlewares
 app.set('views', __dirname + '/src/views')
 app.set('view engine', 'hbs')
 app.use(express.static(path.join(__dirname, '/src/public')));
 app.use(cookieParser())
+app.use(errorHandler)
+app.use(addLogger)
 
 // ROUTES  
-app.get('/', (req, res) => res.redirect('/api'))
+app.get('/', (req, res) => {
+  req.logger.warning('Se accedio por ruta indefinida')
+  res.redirect('/api')
+})
 app.use('/api', routes)
 
 
@@ -45,7 +57,7 @@ app.use(
     origin:
       process.env.NODE_ENV === "production"
         ? process.env.CLIENT_URL
-        : "http://127.0.0.1:3000",
+        : "http://localhost:3000",
   }));
 
 // PASSPORT  

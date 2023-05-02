@@ -1,0 +1,59 @@
+error: GET en /api/products/mockingproducts - 17:07:03
+error: Simulating error in mocking products
+error: GET en /api/styles.css - 17:07:04
+error: Simulating error in mocking products
+error: Este es un log a nivel error
+error: Este es un log a nivel error
+error: Este es un log a nivel error
+error: Este es un log a nivel error
+error: Este es un log a nivel error
+error: Este es un log a nivel error
+fatal: Este es un log a nivel fatal
+fatal: Este es un log a nivel fatal
+fatal: Este es un log a nivel fatal
+fatal: Este es un log a nivel fatal
+error: Este es un log a nivel error
+fatal: Este es un log a nivel fatal
+error: Este es un log a nivel error
+fatal: Este es un log a nivel fatal
+error: Este es un log a nivel error
+fatal: Este es un log a nivel fatal
+error: Este es un log a nivel error
+fatal: Este es un log a nivel fatal
+error: Este es un log a nivel error
+error: No has iniciado sesion
+error: No has iniciado sesion
+fatal: Este es un log a nivel fatal
+error: Este es un log a nivel error
+error: No se recibieron los valores necesarios: mail y nueva contraseña
+error: Contraseña Repetida
+error: Contraseña Repetida
+error: Contraseña Repetida
+error: Contraseña Repetida
+error: Contraseña Repetida
+error: Contraseña Repetida
+error: Contraseña Repetida
+error: Contraseña Repetida
+error: intentando eliminar producto sin permisos
+error: intentando eliminar producto sin permisos
+error: intentando eliminar producto sin permisos
+error: intentando eliminar producto sin permisos
+error: intentando eliminar producto sin permisos
+error: intentando eliminar producto sin permisos
+error: intentando eliminar producto sin permisos
+error: intentando eliminar producto sin permisos
+error: intentando eliminar producto sin permisos
+error: intentando eliminar producto sin permisos
+error: intentando eliminar producto sin permisos
+error: Ha ocurrido un error Cannot read properties of undefined (reading 'constructor')
+error: Ha ocurrido un error Cannot read properties of undefined (reading 'constructor')
+error: Ha ocurrido un error Cannot read properties of undefined (reading 'constructor')
+error: Ha ocurrido un error Cannot read properties of undefined (reading 'constructor')
+error: Ha ocurrido un error Cannot read properties of undefined (reading 'constructor')
+error: Ha ocurrido un error Cannot read properties of undefined (reading 'constructor')
+error: Ha ocurrido un error Cannot read properties of undefined (reading 'constructor')
+error: Ha ocurrido un error Cannot read properties of undefined (reading 'constructor')
+error: Ha ocurrido un error Cannot read properties of undefined (reading 'constructor')
+error: Ha ocurrido un error Cannot read properties of undefined (reading 'constructor')
+error: Ha ocurrido un error Cannot read properties of undefined (reading 'constructor')
+error: Ha ocurrido un error Cannot read properties of undefined (reading 'constructor')
