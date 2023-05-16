@@ -1,0 +1,70 @@
+<a href="/api/carts">Mira la lista de carritos disponibles</a>
+
+<h2>Agrega nuevos productos a la base de datos!</h2>
+<form action="products" method="post" enctype="multipart/form-data"> 
+  <input type="text" name="title" placeholder="Nombre">
+  <input type="text" name="description" placeholder="Descripcion">
+  <input type="text" name="category" placeholder="Categoria">
+  <input type="text" name="price" placeholder="Precio">
+  <label for="file">Elige una imagen</label>
+  <input type="file" name="thumbnail" >
+  <input type="text" name="code" placeholder="Codigo">
+  <input type="text" name="stock" placeholder="stock">
+  <button>Enviar</button>
+</form>
+<br>
+<br>
+<table>
+	<thead>
+		<tr>
+			<td>Title</td>
+			<td>Description</td>
+			<td>Category</td>
+			<td>Price</td>
+			<td>Stock</td>
+			<td>ID de producto</td>
+			<td>Owner</td>
+			<td>Accion</td>
+		</tr>
+	</thead>
+	<tbody>
+    {{#each products.docs}}
+            <tr>
+			<td>{{this.title}}</td>
+			<td>{{this.description}}</td>
+			<td>{{this.category}}</td>
+			<td>{{this.price}}</td>
+			<td>{{this.stock}}</td>
+			<td id="_id">{{this._id}}</td>
+			<td>{{this.owner}}</td>
+      <td><button id="deleteProduct" data-id={{_id}} >Eliminar</button></td>
+
+		</tr>
+        {{/each}}
+	</tbody>
+</table>
+
+
+ <div>
+        <a href="api/products?page={{products.prevPage}}&&limit=">Prev</a>
+        <a href="api/products?page={{products.nextPage}}">Next</a>
+    </div>
+<h5>
+      {{ products.page }} / {{ products.totalPages }}
+    </h5>
+
+    {{message}}
+
+<h3 id="message"></h3>
+
+    <h3>Agregar producto a carrito </h3>
+
+      <input id="cid" type="text" name="cid" placeholder="Ingresa el ID del carrito" >
+      <input id="pid" type="text" name="pid"  placeholder="Ingresa el ID del producto">
+      <input id="quantity" type="text" name="quantity"  placeholder="Ingresa la cantidad">
+      <button id="cartButton">Agregar al carrito!</button>
+      <h3 "fetchMessage"></h3>
+
+      <script type="module" src="/products.js">
+        
+      </script>
