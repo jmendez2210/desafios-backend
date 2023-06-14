@@ -1,0 +1,127 @@
+body {
+  font-family: Arial, sans-serif;
+   padding: 0;
+  margin: 0;
+ background-color: #FAFAFA;
+}
+
+img, button{
+  transition: transform 0.2s ease-in-out();
+}
+
+img:hover, button:hover{
+  transform:scale(1.1)
+}
+
+#deleteInactiveUsers, #deleteButton{
+  background-color: red !important;
+}
+
+
+
+#deleteInactiveUsers{
+  margin-top: 2rem;
+}
+
+
+.title {
+  width: 100%;
+  height: 5em;
+  background-color: #82A8EE;
+  padding: 0.5em;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+
+
+#homeicon {
+  
+  margin-right: 4em;
+  height: 4em;
+  width: 4em;
+}
+h1{
+  font-weight: 900;
+  margin-left:  2em;
+}
+
+.list{
+  margin : 2em;
+  background-color: white;
+}
+
+
+
+h2 {
+  color: #333;
+}
+
+form input {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table td, table th {
+  border:   1px solid #ccc;
+  padding: 7px;
+  text-align: center;
+
+
+}
+
+
+thead{
+  background-color: #007bff;
+  color:white;
+  
+
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#message {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.fetchMessage {
+  font-weight: bold;
+  margin-top: 20px;
+}
+.pagination {
+  margin-left: 2em;
+}
+
+
+.updateform {
+  margin-top: 2em;
+}
+
+
+
+
+
+
+
+
+
+
+

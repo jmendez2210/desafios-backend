@@ -1,0 +1,240 @@
+body {
+  font-family: Arial, sans-serif;
+   padding: 0;
+  margin: 0;
+ background-color: #FAFAFA;
+}
+
+img, button{
+  transition: transform 0.2s ease-in-out();
+}
+
+img:hover, button:hover{
+  transform:scale(1.1)
+}
+form{
+  margin: 3em;
+}
+.darkened-row {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: rgba(255, 255, 255, 0.7);
+}
+h2{
+  margin-left: 3em;
+}
+#openModalBtn {
+  margin: 2em;
+}
+
+.purchase{
+  color:white; 
+  text-decoration: none;
+  
+}
+
+
+.title {
+  width: 100%;
+  height: 5em;
+  background-color: #82A8EE;
+  padding: 0.5em;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+
+#productsicon, #carticon {
+  height: 4em;
+  width: 4em;
+}
+p{
+  margin:3em;
+}
+
+#plusIconButton{
+  background-color: none !important;
+ border-radius:  2em; 
+}
+
+#homeicon {
+  
+  margin-right: 4em;
+  height: 4em;
+  width: 4em;
+}
+
+
+h1{
+  font-weight: 900;
+  margin-left:  2em;
+}
+
+.list{
+  margin : 2em;
+  background-color: white;
+}
+
+
+
+h2 {
+  color: #333;
+}
+
+form input {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+table {
+  margin-top: 3em;
+  margin-left: auto;
+  width: 80%;
+  border-collapse: collapse;
+}
+
+#productTable {
+  margin-top: 3em;
+  margin-left: 9em;
+  width: 80%;
+  border-collapse: collapse;
+}
+
+table td, table th {
+  border:   1px solid #ccc;
+  padding: 7px;
+  text-align: center;
+
+
+}
+
+
+thead{
+  background-color: #007bff;
+  color:white;
+}
+
+
+.tablehead{
+  color:black;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+
+#deleteProduct {
+
+  background-color: red;
+}
+
+#message {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+#cartButton {
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.fetchMessage {
+  font-weight: bold;
+  margin-top: 20px;
+}
+.pagination {
+  margin-left: 2em;
+}
+
+
+
+/* Modal para carga de productos en el carrito */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #f9f9f9;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  max-width: 800px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #000;
+}
+
+.modal-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.modal-table th,
+.modal-table td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.modal-table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.modal-table td:last-child {
+  text-align: center;
+}
+
+.modal-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.modal-button:hover {
+  background-color: #45a049;
+}
+
+
+
+
+
+
+

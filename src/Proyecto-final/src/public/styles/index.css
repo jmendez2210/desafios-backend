@@ -1,0 +1,215 @@
+/* helpers/accessibility.css */
+
+h4 {
+  margin-left: 2em;
+  color: black;
+}
+img {
+  height: 4em;
+  width: 4em;
+}
+.invisible {
+  left: -999px;
+  /* overflow: hidden; */
+  /* position: absolute; */
+  top: -999px;
+}
+
+/* helpers/align.css */
+
+.align {
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  place-items: center;
+}
+
+/* layout/base.css */
+
+:root {
+  --body-background-color: #82a8ee;
+  --body-color: #97adc6;
+}
+
+body {
+  background-color: #82a8ee;
+  background-color: var(--body-background-color);
+  color: #97adc6;
+  color: var(--body-color);
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* modules/anchor.css */
+
+a {
+  color: inherit;
+  outline: 0;
+}
+
+/* modules/icon.css */
+
+.icons {
+  display: none;
+}
+
+.icon {
+  height: 1em;
+  display: inline-block;
+  fill: currentcolor;
+  width: 1em;
+  vertical-align: middle;
+}
+
+.icon--2x {
+  font-size: 2rem;
+}
+
+/* modules/image.css */
+
+svg {
+  max-width: 100%;
+}
+
+/* modules/navigation.css */
+
+:root {
+  --navigation-background-color: #f0f6ff;
+  --navigation-border-radius: 0.25em;
+
+  --navigation-anchor-padding: 1.5em;
+}
+
+.navigation {
+  background-color: #f0f6ff;
+  background-color: var(--navigation-background-color);
+  border-radius: 0.25em;
+  border-radius: var(--navigation-border-radius);
+  -webkit-box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+}
+
+.navigation ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation a {
+  display: block;
+  padding: 3.5em;
+  padding: var(--navigation-anchor-padding);
+  position: relative;
+  text-decoration: none;
+}
+
+.navigation a:focus::after,
+.navigation a:hover::after {
+  opacity: 1;
+}
+
+.navigation a::after {
+  height: 100%;
+  -webkit-box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+          box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+  content: '';
+  width: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: opacity 0.3s;
+  -o-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.navigation--inline ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.userinfo{
+  display: flex;
+  align-items: center;
+
+}
+
+
+.finishSession{
+  margin-left: 5em;
+  display: flex;
+  align-items: center;
+}
+i{
+  margin-left: 1em;
+  color: black;
+}
+
+.align {
+	-webkit-animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	        animation: fade-in 1.2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Boton flotador para chat */
+
+#botonflotador{
+position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+#botonflotador {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  transition: transform 2s ease-in-out;
+}
+
+#botonflotador:hover {
+  transform: translateY(-5px);
+  /* Puedes ajustar el valor de translateY para cambiar la distancia de desplazamiento */
+  /* Por ejemplo, translateY(-10px) moverá el botón hacia arriba en 10 píxeles */
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+    /* Puedes ajustar el valor de translateY para cambiar la altura máxima de flotación */
+    /* Por ejemplo, translateY(-20px) hará que el botón flote más alto */
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+#botonflotador {
+  animation: float 3s ease-in-out infinite;
+  /* Puedes ajustar el valor de animation-duration para cambiar la velocidad de la animación */
+  /* Por ejemplo, animation: float 5s ease-in-out infinite hará que la animación dure 5 segundos */
+}

@@ -1,0 +1,283 @@
+securitySchemes: 
+ cookieAuth: 
+   type: apiKey
+   in: cookie
+   name: coderCokieToken
+paths:
+  /api/products/:
+    get:
+      summary: 'Get all products'
+      security:
+         - cookieAuth: []
+      tags:
+        - Products
+      responses: 
+        "200":
+          description: "Products found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/products"
+        "500":
+          description: "Internal server error"
+        "401":
+          description: "Sin token de autorizacion, debes loguearte primero"
+    post:
+      summary: "Create a new product"
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/createProduct'
+      responses:
+        "201":
+          description: "Producto creado"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/products"
+        "500":
+          description: "Internal server error"
+        "401":
+          description: "Not authorized"
+        "400":
+          description: "Ha ocurrido un error, verifique que el codigo de producto sea distinto a los demas"
+  /api/products?json=true:
+    get:
+      summary: 'Get all products in JSON format'
+      security:
+         - cookieAuth: []
+      tags:
+        - Products
+      responses: 
+        "200":
+          description: "Products found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/products"
+        "500":
+          description: "Internal server error"
+        "401":
+          description: "Sin token de autorizacion, debes loguearte primero"
+  /api/products/{pid}:
+    get:
+      summary: 'Get product by ID'
+      tags:
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: "Product ID"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "Product found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/products"
+        "500":
+          description: "Internal server error"
+    put:
+      summary: 'Update Product'
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/requestBodies/updateProduct'
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: "Product ID"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "Updated Product"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/product"
+        "500":
+          description: "Internal server error"
+        "400":
+          description: "Bad request"
+        "401":
+          description: "Unauthorized"
+    delete:
+      summary: 'Delete a product'
+      tags:
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: "Product ID"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "Product deleted"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/products"
+        "500":
+          description: "Internal server error"
+        "400":
+          description: "Bad request"
+        "401":
+          description: "Unauthorized"
+  /api/products/{pid}?json=true:
+    get:
+      summary: 'Get product by ID'
+      tags:
+        - Products
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: "Product ID"
+          schema:
+            type: string
+      responses:
+        "200":
+          description: "Product found"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/products"
+        "500":
+          description: "Internal server error"
+
+components:
+  schemas:
+    type: object
+    products:
+      properties:
+        _id:
+          type: ObjectId
+          description: "Product ID"
+        title:
+          type: string
+          description: "Product Name"
+        description:
+          type: string
+          description: "Product description"
+        category:
+          type: string
+          description: "Product category"
+        price:
+          type: integer
+          description: "Product price"
+        code:
+          type: string
+          description: "Product code"
+        status:
+          type: boolean
+          description: "Product status"
+        stock: 
+          type: integer
+          description: "Product Stock"
+        image:  
+          type: string
+          description: "Product image"
+        owner: 
+          type: string
+          description: "Product Owner"
+      example:
+        _id: 5f9d7b3b9d9b4b2b3c9d9b4b
+        title: "Manzana"
+        description: "Fruit" 
+        category: "Alimento"
+        price: 300
+        code: "A28"
+        status: true
+        stock: 35
+        owner: "german.alejandrozulet@gmail.com" 
+        image: "https://purepng.com/public/uploads/large/purepng.com-red-appleapplemalus-domesticafruitdeliciousred-apple-170152716492043huf.png"
+  requestBodies:
+    createProduct:
+      properties:
+        title:
+          type: string
+          description: "Product Name"
+        description:
+          type: string
+          description: "Product description"
+        category:
+          type: string
+          description: "Product category"
+        price:
+          type: integer
+          description: "Product price"
+        code:
+          type: string
+          description: "Product code"
+        status:
+          type: boolean
+          description: "Product status"
+        stock: 
+          type: integer
+          description: "Product Stock"
+        thumbnail: 
+          type: string
+          format: binary
+      example:
+        title: "Sandia"
+        description: "Fruta"
+        category: "Alimentos"
+        price: 900
+        code: "A82"
+        status: true
+        stock: 29
+    updateProduct: 
+      properties:
+        title:
+          type: string
+          description: "Product Name"
+        description:
+          type: string
+          description: "Product description"
+        category:
+          type: string
+          description: "Product category"
+        price:
+          type: integer
+          description: "Product price"
+        stock: 
+          type: integer
+          description: "Product Stock"
+        thumbnail: 
+          type: string
+          format: binary
+      example:
+        title: "Ingresa el nuevo nombre o modifica cualquiera de los campos"
+        description: "Fruta"
+        category: "Alimentos"
+        price: 900
+        status: true
+        stock: 29
+

@@ -1,0 +1,67 @@
+<div class="title">
+  <h1>Detalle de carrito </h1>
+    <a href="/api/carts">
+    <label for="carts">Mira los carritos actuales</label>
+    <img id="carticon" src="/images/carticon.png" alt="carrito">
+  </a>
+
+
+   <a href="/api/">
+    <img id="homeicon" src="/images/home.png" alt="home">
+  </a>
+
+  </div>
+  <h2>CID</h2>
+  <h2 id="cid">{{result._id}}</h2>
+<table id="productTable">
+	<thead>
+		<tr>
+			<td>Title</td>
+			<td>Description</td>
+			<td>Category</td>
+			<td>Price</td>
+			<td>Cantidad</td>
+			<td>Stock Actual</td>
+		</tr>
+	</thead>
+	<tbody>
+
+
+    {{#each result.products}}
+            <tr>
+			<td>{{this.product.title}}</td>
+			<td>{{this.product.description}}</td>
+			<td>{{this.product.category}}</td>
+			<td>${{this.product.price}}</td>
+			<td>{{this.quantity}}</td>
+			<td>{{this.product.stock}}</td>
+			<td id="_id" style="display:none">{{this._id}}</td>
+      <td><button id="deleteProduct" data-id={{_id}} >Eliminar</button></td>
+		</tr>
+        {{/each}}
+
+
+   
+      
+	</tbody>
+</table>
+
+    <button id="openModalBtn"> Agregar producto</button>
+    <button id="purchaseButton"> Adquirir</button>
+
+
+<div class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Productos</h3>
+    <ul id="product-list"></ul>
+  </div>
+</div>
+
+
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script type="module" src="/cartbyid.js">
+  
+</script>
