@@ -16,13 +16,9 @@ img:hover, button:hover{
 #deleteInactiveUsers, #deleteButton{
   background-color: red !important;
 }
-
-
-
 #deleteInactiveUsers{
   margin-top: 2rem;
 }
-
 
 .title {
   width: 100%;
@@ -35,10 +31,7 @@ img:hover, button:hover{
   font-weight: 500;
 }
 
-
-
 #homeicon {
-  
   margin-right: 4em;
   height: 4em;
   width: 4em;
@@ -47,13 +40,10 @@ h1{
   font-weight: 900;
   margin-left:  2em;
 }
-
 .list{
   margin : 2em;
   background-color: white;
 }
-
-
 
 h2 {
   color: #333;
@@ -77,16 +67,10 @@ table td, table th {
   border:   1px solid #ccc;
   padding: 7px;
   text-align: center;
-
-
 }
-
-
 thead{
   background-color: #007bff;
   color:white;
-  
-
 }
 
 button {
@@ -96,12 +80,10 @@ button {
   padding: 10px 20px;
   cursor: pointer;
 }
-
 #message {
   font-weight: bold;
   margin-top: 20px;
 }
-
 .fetchMessage {
   font-weight: bold;
   margin-top: 20px;
@@ -110,18 +92,6 @@ button {
   margin-left: 2em;
 }
 
-
 .updateform {
   margin-top: 2em;
 }
-
-
-
-
-
-
-
-
-
-
-

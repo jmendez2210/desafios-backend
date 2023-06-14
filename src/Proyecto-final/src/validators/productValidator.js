@@ -62,15 +62,9 @@ class productValidator {
       })
     }
 
-
     if (typeof (title) !== 'string' || typeof (description) !== 'string' || parseInt(stock) === 'NaN' || parseInt(price) === 'NaN' || typeof (code) !== 'string') {
       throw new Error("One of your inputs is not the correct one, putting letters in price for example")
     }
-
-
-
-
-
 
     try {
       const product = { title, description, category, price, thumbnailName, code, stock, owner }
@@ -90,7 +84,6 @@ class productValidator {
     }
   }
 
-
   async deleteProduct(pid, user, role) {
     try {
       if (!pid) throw new Error("Missing PID")
@@ -98,7 +91,6 @@ class productValidator {
       logger.debug(`El pid es: ${pid}`)
 
       const product = await productServices.getProductById(pid)
-
 
       logger.debug(`El producto buscado es ${product}`)
       logger.debug(`El rol del usuario es : ${role}`)
@@ -113,7 +105,7 @@ class productValidator {
 
       if (((product.owner === user) && role === 'premium') || role === "admin") {
         await transport.sendMail({
-          from: 'German <german.alejandrozulet@gmail.com>',
+          from: 'Jorge <jorge.mendez.lagos@gmail.com>',
           to: user,
           subject: 'Su producto ha sido eliminado',
           html: `
@@ -127,7 +119,7 @@ class productValidator {
   <div>
     <h1>Producto Eliminado</h1>
     <p>Estimado/a Usuario/a,</p>
-    <p>Se ha seleccionado el producto para eliminar,  con las siguientes caracteristicas:</p>
+    <p>Se ha seleccionado el producto para eliminar</p>
 
 <ul>
   <li>Nombre:${product.title}</li>
@@ -135,33 +127,25 @@ class productValidator {
   <li>Categoria: ${product.category}</li>
   <li>Precio: $ ${product.price}</li>
 </ul>
-
-
-    <p>Si tienes alguna pregunta o necesitas ayuda, por favor contáctanos.</p>
+    <p>Si tienes una consulta, por favor contáctanos.</p>
     <p>Gracias,</p>
-    <p>El equipo del alumno de CODERHOUSE</p>
+    <p>Nuestro equipo siempre tendra la amabilidad de responder</p>
   </div>
 </body>
 </html>
  
       `, attachments: []
-
         })
         await productServices.deleteProduct(pid)
-
       } else {
-        throw new Error("No estas autorizado para realizar esta operacion, no eres dueño del producto")
+        throw new Error("No estas autorizado para realizar esta operacion, favor contactese con nuestro soporte.")
       }
-
 
     } catch (error) {
       throw new Error(error)
     }
   }
-
-
 }
-
 
 export default new productValidator()
 

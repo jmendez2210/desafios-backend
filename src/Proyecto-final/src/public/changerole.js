@@ -7,7 +7,6 @@ deleteButtons.forEach(button => {
     event.preventDefault()
 
     let uid = event.target.dataset.id;
-
     await fetch(`/api/users/${uid}`, {// 
       method: 'DELETE',
     })
@@ -28,18 +27,12 @@ deleteButtons.forEach(button => {
       .catch(error => {
         console.log(error)
       })
-
   })
 })
-
-
 const sendButtons = document.querySelectorAll('#sendButton');
-
 sendButtons.forEach(button => {
-
   button.addEventListener('click', async (event) => {
     event.preventDefault()
-
     let uid = event.target.dataset.id;
     let data = {
       role: "premium"
@@ -57,7 +50,7 @@ sendButtons.forEach(button => {
         if (response.ok) {
           iziToast.success({
             title: "Usuario actualizado!",
-            message: "Recargue la pagina para comprobar los cambios"
+            message: "actualizar su pagina para refrescar los cambios"
           })
           window.location.href = "/api/users/premium"
         } else {
@@ -73,7 +66,6 @@ sendButtons.forEach(button => {
 
   })
 })
-
 
 document.getElementById("deleteInactiveUsers").addEventListener('click', async () => {
   console.log("Eliminando usuarios inactivos")
@@ -98,6 +90,4 @@ document.getElementById("deleteInactiveUsers").addEventListener('click', async (
     .catch(error => {
       console.log(error)
     })
-
-
 })

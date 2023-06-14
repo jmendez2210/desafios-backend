@@ -6,7 +6,6 @@ const storage = multer.diskStorage({
 
   destination: function(req, file, callback) {
     let folder = ''
-
     if (file.fieldname === 'profilePic') {
       folder = 'profile';
     } else if (file.fieldname === 'productImage') {
@@ -15,15 +14,10 @@ const storage = multer.diskStorage({
       folder = 'documents';
     }
 
-
-
     callback(null, process.cwd() + `/src/uploads/${folder}`)
   },
 
-
   filename: function(req, file, callback) {
-
-
     if (file.fieldname === 'profilePic') {
       callback(null, `profileImage-${req.user.user}`)
     } else if (file.fieldname === 'productImage') {
@@ -31,9 +25,6 @@ const storage = multer.diskStorage({
     } else {
       callback(null, `${file.fieldname}-from user: ${req.user.user}`)
     }
-
-
-
   }
 })
 

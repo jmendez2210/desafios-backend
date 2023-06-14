@@ -2,16 +2,11 @@
 const enviarMail = document.getElementById("mailform").addEventListener('submit', (event) => {
   event.preventDefault()
   console.log("Enviando mail para restaurar contraseña")
-
-
   const data = {
     email: document.getElementById('email').value
   }
   console.log(data)
-
   let result;
-
-
   fetch(`/api/session/restore`, {
     method: 'POST',
     headers: {
@@ -41,11 +36,7 @@ const enviarMail = document.getElementById("mailform").addEventListener('submit'
         })
       }
     })
-
-
 })
-
-
 
 document.getElementById("form").addEventListener('submit', (event) => {
   event.preventDefault()
@@ -53,13 +44,11 @@ document.getElementById("form").addEventListener('submit', (event) => {
   const token = document.getElementById('token').innerHTML
   console.log(token)
 
-
   const data = {
     newPassword: document.getElementById('newPassword').value
   }
   console.log(data)
   let result;
-
   fetch(`/api/session/updateUser/${token}`, {
     method: 'PUT',
     headers: {
@@ -74,7 +63,6 @@ document.getElementById("form").addEventListener('submit', (event) => {
           title: "Contraseña cambiada!"
         })
         window.location.href = "/api/session/login"
-
       } else {
         result = response
         return response.json()
@@ -90,18 +78,4 @@ document.getElementById("form").addEventListener('submit', (event) => {
         })
       }
     })
-
-
-  // .then(response => {
-  //   if (response.ok) {
-  //     console.log('Recurso actualizado correctamente');
-  //     window.location.href = "/api/session/login"
-
-  //   } else {
-  //     console.log(response)
-  //   }
-  // })
-  // .catch(error => console.error(error));
-
-
 })

@@ -15,7 +15,6 @@ router.get('/', passportCall('jwt'), authorization(['user', 'admin', 'premium'])
     console.log("Socket connected")
     console.log(await chatController.getMessages())
 
-
     socket.on("mensajeNuevo", async (data) => {
       let message = {
         user: data.user,
@@ -25,13 +24,9 @@ router.get('/', passportCall('jwt'), authorization(['user', 'admin', 'premium'])
       io.emit("historialChat", await chatController.getMessages())
     })
 
-
-
     socket.emit("historialChat", await chatController.getMessages())
     console.log("Desde router", await chatController.getMessages())
   })
-
-
   res.render('chat', { styleRoute: `<link href="../styles/chat.css" rel="stylesheet">` });
 })
 

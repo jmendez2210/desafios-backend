@@ -7,8 +7,6 @@ const generateProductErrorInfo = product => {
   *price : needs to be a Non-Empty Number, received ${product.price}
   *code : needs to be a Non-Empty Number, received ${product.code}
   *stock : needs to be a Non-Empty String, received ${product.stock}
-
-
 `
 }
 

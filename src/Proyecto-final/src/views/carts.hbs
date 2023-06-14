@@ -6,21 +6,15 @@
     <img id="plusIcon" src="../images/plus.png" alt="crearcarrito">
           </button>
 </form>
-    
   <a href="/api/products">
     <label for="carts">Mira la lista de productos</label>
     <img id="productsicon" src="../images/productsicon.png" alt="productos">
   </a>
-
    <a href="/api/">
     <img id="homeicon" src="../images/home.png" alt="home">
   </a>
-
   </div>
-
-
   <tr>
-
 <table>
 	<thead>
 			<td>ID de Carrito </td>
@@ -33,20 +27,13 @@
             <tr>
 			<td id="id">{{this._id}}</td>
       <td><a href="/api/carts/{{this._id}}" </a>Ver mas</td>
-
-
       {{#if this.products}}
       <td><button id="purchaseButton" data-id={{_id}} >Adquirir</button></td>
       {{/if}}
-
-
 		</tr>
         {{/each}}
 	</tbody>
-</table>
-
-
-    
+</table> 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
       <script type="module" src="/carts.js">
         

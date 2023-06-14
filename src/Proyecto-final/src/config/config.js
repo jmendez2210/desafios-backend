@@ -2,19 +2,14 @@ import dotenv from 'dotenv';
 import { Command } from "commander";
 
 const program = new Command()
-
 program
   .option("-m, --mode <mode>, 'Establish development or production mode'", 'development')
 
-
 program.parse()
-
 console.log("💥Programa funcionando en modo" + " " + program.opts().mode)
-
 dotenv.config({
   path: program.opts().mode === 'development' ? './.env.development' : './.env.production'
 })
-
 export default {
   PORT: process.env.PORT,
   MONGO_URI: process.env.MONGO_URI,

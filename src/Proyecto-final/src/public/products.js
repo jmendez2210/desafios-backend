@@ -1,16 +1,11 @@
-
-
-// Busqueda de productos
 document.getElementById("productSearch").addEventListener('submit', async (event) => {
   event.preventDefault()
   console.log("Iniciando busqueda")
   let nombreProducto = document.getElementById("searchTitle").value
 
-
   fetch('/api/products?json=true')
     .then(response => response.json())
     .then(data => {
-      // Buscar el producto por nombre en el array de productos
       console.log(data.docs)
       const productoEncontrado = data.docs.find(producto => producto.title === nombreProducto);
 
@@ -18,7 +13,6 @@ document.getElementById("productSearch").addEventListener('submit', async (event
       if (productoEncontrado) {
         const productoId = productoEncontrado._id;
 
-        // Realizar la segunda petición Fetch utilizando el ID del producto
         fetch(`/api/products/${productoId}`)
           .then(res => {
             if (res.ok) {
@@ -35,13 +29,12 @@ document.getElementById("productSearch").addEventListener('submit', async (event
             }
           })
           .catch(error => {
-            console.log('Error al buscar el producto en la base de datos:', error);
+            console.log('no se ha podido encontrar el producto:', error);
           });
       } else {
         iziToast.error({
-          title: "No hay ningun producto con ese nombre"
+          title: "no existe este producto en la base de datos"
         })
-        // Resto de la lógica...
       }
     })
     .catch(error => {
@@ -51,13 +44,7 @@ document.getElementById("productSearch").addEventListener('submit', async (event
 
 })
 
-// FUNCIONALIDAD PARA MODIFICAR STOCK DE PRODUCTO
-
-
-// Obtener todas las filas de la tabla
 let rows = document.querySelectorAll("table tbody tr");
-
-// Agregar el botón y el evento de clic a cada fila
 rows.forEach(function(row) {
   let modifyButton = document.createElement("button");
   modifyButton.innerText = "Modificar";
@@ -73,11 +60,9 @@ rows.forEach(function(row) {
 
 function toggleRowEdit(row) {
   if (row.classList.contains("editable-row")) {
-    // Si la fila está en modo edición, enviar los cambios al servidor
     sendRowData(row);
     disableRowEdit(row);
   } else {
-    // Si la fila no está en modo edición, activar la edición
     enableRowEdit(row);
     darkenOtherRows(row);
   }
@@ -86,12 +71,10 @@ function toggleRowEdit(row) {
 function enableRowEdit(row) {
   let cells = row.cells;
   for (let i = 0; i < cells.length; i++) {
-    // Excluir la columna "ID de producto" de la edición
     if (i !== 5 && i !== 6) {
       cells[i].setAttribute("contenteditable", "true");
     }
   }
-
   row.classList.add("editable-row");
 }
 
@@ -112,8 +95,6 @@ function darkenOtherRows(row) {
     }
   });
 }
-
-// Función para enviar los datos de una fila modificada al servidor
 function sendRowData(row) {
   let rowData = {
     title: row.cells[0].innerText,
@@ -126,10 +107,7 @@ function sendRowData(row) {
   let pid = row.cells[5].innerText
   console.log(pid)
 
-
   fetch(`/api/products/${pid}`, {
-
-
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
@@ -139,9 +117,8 @@ function sendRowData(row) {
     .then(function(response) {
       console.log(response)
       if (response.ok) {
-        // Si la respuesta es exitosa, puedes realizar acciones adicionales si es necesario
         iziToast.success({
-          title: "Producto modificado exitosamente!"
+          title: "Producto modificado satisfactoriamente!"
         })
         setTimeout(() => {
           window.location.href = "/api/products"
@@ -158,32 +135,9 @@ function sendRowData(row) {
     });
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 document.getElementById("nuevoProducto").addEventListener('submit', async (event) => {
-
   event.preventDefault()
   console.log("En funcion carga de nuevo producto")
-
-
 
   var formValues = {
     title: document.getElementsByName("title")[0].value,
@@ -198,7 +152,6 @@ document.getElementById("nuevoProducto").addEventListener('submit', async (event
   for (let key in formValues) {
     formData.append(key, formValues[key]);
   }
-
   let result = {};
   await fetch('/api/products', {// 
     method: 'POST',
@@ -227,20 +180,11 @@ document.getElementById("nuevoProducto").addEventListener('submit', async (event
         })
       }
     })
-
-
-
 })
-
-
-
-
 
 const fetchMessage = document.getElementById("fetchMessage")
 const deleteMessage = document.getElementById("deleteMessage")
-
 const deleteButtons = document.querySelectorAll('#deleteProduct');
-
 deleteButtons.forEach(button => {
   button.addEventListener('click', event => {
     const itemId = event.target.dataset.id;
@@ -259,7 +203,6 @@ deleteButtons.forEach(button => {
           })
           setTimeout(() => {
             window.location.href = "/api/products"
-
           }, 800);
         }
       })
@@ -269,20 +212,15 @@ deleteButtons.forEach(button => {
   });
 });
 
-
-// Modal para carga de productos
 const openModalBtn = document.getElementById('openModalBtn');
 const modal = document.getElementById('modal');
 const closeModal = document.getElementsByClassName('close')[0];
-
 openModalBtn.addEventListener('click', () => {
   modal.style.display = 'block';
 });
-
 closeModal.addEventListener('click', () => {
   modal.style.display = 'none';
 });
-
 window.addEventListener('click', (event) => {
   if (event.target === modal) {
     modal.style.display = 'none';

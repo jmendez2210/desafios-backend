@@ -14,13 +14,9 @@ const transport = nodemailer.createTransport({
 })
 
 class cartController {
-
-
   async getCarts(req, res) {
-
     let limit = parseInt(req.query.limit)
     let json = (req.query.json)
-
     try {
       const result = await cartValidator.getCarts(limit)
       req.logger.debug(result)
@@ -32,12 +28,10 @@ class cartController {
     }
   }
 
-
   async getCartById(req, res) {
     let json = req.query.json
     try {
-
-      const result = await cartValidator.getCartById(req.params.cid)
+     const result = await cartValidator.getCartById(req.params.cid)
       req.logger.debug(`Resultado de getCartbyId en controler ${result}`)
       if (json) res.status(200).json(result)
       else res.render('cartById', { result, title: "Search Cart", styleRoute: `<link href="/styles/cartbyid.css" rel="stylesheet">` })
@@ -60,7 +54,6 @@ class cartController {
           <h1> Hey! Has creado un carrito exitosamente! </h1>
         </div> 
 `, attachments: []
-
       })
       req.logger.info("Mail has been sent")
       res.status(201).json({ info: 'Cart Created' })
@@ -68,15 +61,12 @@ class cartController {
       req.logger.error(`Funcion createCart en controlador: ${error.message}`)
       res.status(400).json({ info: `Something has happened: ${error}` })
     }
-
-
   }
 
   async updateCart(req, res) {
     const cid = (req.params.cid)
     const { quantity, pid } = req.body;
     const product = { product: pid, quantity: quantity }
-    // Variable booleana para evitar que se intente enviar dos headers en una misma respuesta, si enmbargo, es un problema exclusivo de este funcion, no rompe el programa pero es algo para revisar
     let responseSent = false
     try {
       const user = req.user
@@ -89,11 +79,9 @@ class cartController {
         req.logger.error(`Funcion updateCart en controlador: ${error.message}`)
         res.status(400).json({ error: error.message })
         responseSent = true
-
       }
     }
   }
-
   async updateQuantityFromCart(req, res) {
     req.logger.debug("Actualizando cantidad de producto")
     const { cid, pid } = req.params;
@@ -106,11 +94,8 @@ class cartController {
       console.log(error)
       req.logger.error(`Funcion updateQuantityFromCart en controlador: ${error.message}`)
       res.json({ error: error })
-
     }
-
   }
-
   async deleteProductFromCart(req, res) {
     const { cid, pid } = req.params;
     console.log(cid)
@@ -121,12 +106,9 @@ class cartController {
       res.json({ message: `PID: ${pid} has been deleted from cart ${cid}`, payload: await cartValidator.getCartById(cid) })
     } catch (error) {
       req.logger.error(`Funcion deleteProductFromCart en controlador: ${error.message}`)
-
       res.json({ error: error.message })
     }
   }
-
-
 
   async emptyCart(req, res) {
     let { cid } = (req.params)
@@ -136,19 +118,12 @@ class cartController {
       res.json({ status: 200, message: 'Cart Eliminated' })
     } catch (error) {
       req.logger.error(`Funcion emptyCart en controlador: ${error.message}`)
-
       res.json({ error })
     }
   }
-
-
   async purchase(req, res) {
-
-
     let { cid } = (req.params)
     let user = req.user
-
-
     try {
       const result = await cartValidator.purchase(cid, user)
       req.logger.info("cart has been purchased")
@@ -156,13 +131,8 @@ class cartController {
     } catch (Error) {
       req.logger.error(`Funcion purchase en controlador: ${Error.message}`)
       res.json({ error: Error.message })
-
-
     }
-
   }
-
-
 }
 
 export default new cartController()

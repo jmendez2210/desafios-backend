@@ -1,18 +1,13 @@
-
 document.getElementById("loginform").addEventListener('submit', async (event) => {
 
   event.preventDefault()
   console.log("En funcion ")
-
-
   let data = {
     email: document.getElementById('email').value,
     password: document.getElementById('password').value
   }
   console.log(data)
   let wrongresult;
-
-
   await fetch(`/api/session/login`, {// 
     method: 'POST',
     headers: {
@@ -42,9 +37,6 @@ document.getElementById("loginform").addEventListener('submit', async (event) =>
         })
       }
     })
-
-
-
 })
 
 

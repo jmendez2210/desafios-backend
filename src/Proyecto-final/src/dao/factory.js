@@ -1,7 +1,6 @@
 import config from '../config/config.js';
 import mongoose from 'mongoose';
 
-
 export let Users;
 export let Sessions;
 export let Products;
@@ -9,13 +8,12 @@ export let Carts;
 export let Chat;
 export let Ticket;
 
-
 switch (config.persistence) {
   case 'MONGO':
-    console.log('📝📝 Persistence from DB')
+    console.log('Persistence from DB')
     mongoose.set('strictQuery', false)
     mongoose.connect(config.MONGO_URI, (error) => {
-      console.log('🔌🔌🔌🔌 Connected to DB from factory')
+      console.log(' Connected to DB from factory')
       if (error) {
         console.log('Cannot connect to database' + error)
         process.exit()
@@ -34,13 +32,9 @@ switch (config.persistence) {
     Carts = cartMongo;
     Chat = chatMongo;
     Ticket = ticketMongo;
-
     break;
 
-
   case 'MEMORY':
-
-
     const { default: usersMemory } = await import('./memory/users.memory.js')
     const { default: productMemory } = await import('./memory/products.memory.js')
     const { default: cartMemory } = await import('./memory/carts.memory.js')
@@ -51,6 +45,4 @@ switch (config.persistence) {
     Products = productMemory;
     Carts = cartMemory;
     Chat = chatMemory;
-
-
 }

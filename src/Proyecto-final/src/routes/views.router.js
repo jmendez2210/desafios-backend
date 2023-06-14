@@ -31,12 +31,12 @@ router.get('/', (req, res) => {
 })
 
 router.get('/loggerTest', (req, res) => {
-  req.logger.fatal("Este es un log a nivel fatal")
-  req.logger.error("Este es un log a nivel error")
-  req.logger.warning("Este es un log a nivel warning")
-  req.logger.info("Este es un log a nivel info")
-  req.logger.http("Este es un log a nivel http")
-  req.logger.debug("Este es un log a nivel debug")
+  req.logger.fatal("Este es un log fatal")
+  req.logger.error("Este es un log error")
+  req.logger.warning("Este es un log warning")
+  req.logger.info("Este es un log info")
+  req.logger.http("Este es un log http")
+  req.logger.debug("Este es un log debug")
   res.send("Comprobar en consola los logs ")
 })
 

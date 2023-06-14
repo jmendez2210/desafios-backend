@@ -28,8 +28,6 @@ class ProductManager {
       await fs.promises.writeFile(this.path, JSON.stringify(this.products, null, '\t'))
       return true;
     }
-
-
   }
 
   getProducts = () => {
@@ -41,13 +39,10 @@ class ProductManager {
     return producto
   }
 
-
   async updateProduct(id, campo, valorNuevo) {
-
     let index = this.products.findIndex(element => element.id === id)
     let campoValido;
     index === -1 ? false : campoValido = Object.keys(this.products[index]).some(el => el === campo)
-
 
     if (campo === 'id' || !campoValido) {
       return false
@@ -56,10 +51,7 @@ class ProductManager {
       await fs.promises.writeFile(this.path, JSON.stringify(this.products, null, '\t'))
       return true;
     }
-
-
   }
-
 
   async deleteProduct(id) {
     let encontrado = this.products.some(el => el.id === id)

@@ -7,14 +7,12 @@ import viewsRoutes from './views.router.js'
 import chatRoutes from './chat.routes.js'
 
 const router = Router()
-
-router.use('/products', productRoutes)//✅
+router.use('/products', productRoutes)
 router.use('/carts', cartRoutes)
 router.use('/chat', chatRoutes)
 router.use('/session', sessionRoutes)
 router.use('/users', userRoutes)
 router.use('/', viewsRoutes)
-
 
 export default router;
 

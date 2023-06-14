@@ -1,5 +1,3 @@
-/* helpers/accessibility.css */
-
 h4 {
   margin-left: 2em;
   color: black;
@@ -10,12 +8,10 @@ img {
 }
 .invisible {
   left: -999px;
-  /* overflow: hidden; */
-  /* position: absolute; */
+
   top: -999px;
 }
 
-/* helpers/align.css */
 
 .align {
   display: grid;
@@ -26,7 +22,6 @@ img {
   place-items: center;
 }
 
-/* layout/base.css */
 
 :root {
   --body-background-color: #82a8ee;
@@ -42,14 +37,10 @@ body {
   min-height: 100vh;
 }
 
-/* modules/anchor.css */
-
 a {
   color: inherit;
   outline: 0;
 }
-
-/* modules/icon.css */
 
 .icons {
   display: none;
@@ -67,13 +58,10 @@ a {
   font-size: 2rem;
 }
 
-/* modules/image.css */
-
 svg {
   max-width: 100%;
 }
 
-/* modules/navigation.css */
 
 :root {
   --navigation-background-color: #f0f6ff;
@@ -171,7 +159,6 @@ i{
   }
 }
 
-/* Boton flotador para chat */
 
 #botonflotador{
 position: fixed;
@@ -179,7 +166,6 @@ position: fixed;
   right: 20px;
   z-index: 9999;
 }
-
 #botonflotador {
   position: fixed;
   bottom: 20px;
@@ -187,29 +173,20 @@ position: fixed;
   z-index: 9999;
   transition: transform 2s ease-in-out;
 }
-
 #botonflotador:hover {
   transform: translateY(-5px);
-  /* Puedes ajustar el valor de translateY para cambiar la distancia de desplazamiento */
-  /* Por ejemplo, translateY(-10px) moverá el botón hacia arriba en 10 píxeles */
 }
-
 @keyframes float {
   0% {
     transform: translateY(0);
   }
   50% {
     transform: translateY(-15px);
-    /* Puedes ajustar el valor de translateY para cambiar la altura máxima de flotación */
-    /* Por ejemplo, translateY(-20px) hará que el botón flote más alto */
   }
   100% {
     transform: translateY(0);
   }
 }
-
 #botonflotador {
   animation: float 3s ease-in-out infinite;
-  /* Puedes ajustar el valor de animation-duration para cambiar la velocidad de la animación */
-  /* Por ejemplo, animation: float 5s ease-in-out infinite hará que la animación dure 5 segundos */
 }

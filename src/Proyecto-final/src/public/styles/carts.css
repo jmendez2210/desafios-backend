@@ -4,17 +4,12 @@ body {
   margin: 0;
  background-color: #FAFAFA;
 }
-
 img, button{
   transition: transform 0.2s ease-in-out();
 }
-
 img:hover, button:hover{
   transform:scale(1.1)
 }
-
-
-
 
 .title {
   width: 100%;
@@ -86,16 +81,12 @@ table td, table th {
   border:   1px solid #ccc;
   padding: 7px;
   text-align: center;
-
-
 }
 
 
 thead{
   background-color: #007bff;
   color:white;
-  
-
 }
 
 button {
@@ -105,8 +96,6 @@ button {
   padding: 10px 20px;
   cursor: pointer;
 }
-
-
 #deleteProduct {
 
   background-color: red;
@@ -132,12 +121,3 @@ button {
 .pagination {
   margin-left: 2em;
 }
-
-
-
-
-
-
-
-
-

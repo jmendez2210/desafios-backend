@@ -158,10 +158,6 @@ button {
   margin-left: 2em;
 }
 
-
-
-/* Modal para carga de productos en el carrito */
-
 .modal {
   display: none;
   position: fixed;
@@ -231,10 +227,3 @@ button {
 .modal-button:hover {
   background-color: #45a049;
 }
-
-
-
-
-
-
-

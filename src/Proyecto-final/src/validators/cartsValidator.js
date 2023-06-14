@@ -13,7 +13,6 @@ class cartsValidator {
       return carts
     } catch (error) {
       return error;
-
     }
   }
 
@@ -35,11 +34,10 @@ class cartsValidator {
   }
 
   async updateCart(cid, product, user) {
-    //VERIFICANDO EXISTENCIA DE PRODUCTO EN BASE DE DATOS
     let enExistencia = await ProductService.getProductById(product.product)
-    logger.debug(`VAL:Comprobando que el producto exista en la base de datos ${enExistencia}`)
+    logger.debug(`VAL:Comprobando que el producto exista en inventario ${enExistencia}`)
     logger.debug(`VAL:El owner del producto es ${enExistencia.owner}`)
-    logger.debug(`VAL:El rol del usuario que intenta agregar el producto es : ${user.role}`)
+    logger.debug(`VAL:usuario que intenta agregar el producto es : ${user.role}`)
 
 
 
@@ -53,7 +51,7 @@ class cartsValidator {
     }
     let cart = await this.getCartById(cid)
 
-    // Verificamos si ya sta en el carrito
+
     let foundInCart = (cart.products.find(el => (el.product._id).toString() === product.product))
     let productIndex = (cart.products.findIndex(el => (el.product._id).toString() === product.product))
 
@@ -62,22 +60,16 @@ class cartsValidator {
     try {
 
 
-      // Si esta en el carrito, ubicamos su id en el carrito
       if (foundInCart != undefined) {
         logger.warning("VAL: 🧐 Se esta intentando agregar mas productos de los que hay")
         let productStock = cart.products[productIndex].product.stock
-        // Ubicamos la cantidad solicitada en el carrito, y la sumamos con la cantidad que tenemos aca
         let totalAmount = product.quantity + cart.products[productIndex].quantity
         let pidInCart = cart.products[productIndex]._id.toString()
-        // La cantida total no puede superar la cantidad de stock que tenemos en el producto, si la supera, va a ser directamente el total
         if (totalAmount > productStock) totalAmount = productStock
-        // Una vez ubicamos su id, llamamos a la funcion para actualizar la cantidad
         await cartsServices.updateQuantityToCart(cid, pidInCart, totalAmount)
       } else {
         await cartsServices.updateCart(cid, product)
-
       }
-
     } catch (error) {
       throw new Error(error)
     }
@@ -94,8 +86,6 @@ class cartsValidator {
     }
   }
 
-
-
   async deleteProductFromCart(cid, pid) {
     if (!pid) throw new Error("Missing PID")
     if (!cid) throw new Error("Missing CID")
@@ -105,8 +95,6 @@ class cartsValidator {
       return error;
     }
   }
-
-
   async emptyCart(cid) {
     if (!cid) throw new Error("Missing CID")
     try {
@@ -116,10 +104,7 @@ class cartsValidator {
     }
   }
 
-
   async purchase(cid, user) {
-
-
     const cartInExistence = await cartsServices.getCartById(cid)
 
     if (!cartInExistence) throw new Error("Missing CID")
@@ -127,7 +112,6 @@ class cartsValidator {
     if (cartInExistence.products.length === 0) throw new Error("No products in cart")
 
     try {
-
       const client = twilio(config.twilio_account, config.twilio_token)
 
       const cartToModify = cartInExistence;
@@ -135,29 +119,22 @@ class cartsValidator {
       let amount = 0;
 
       cartToModify.products.forEach(async (product) => {
-
         let productToUpdate = product.product._id.toHexString()
 
+        if (product.quantity === product.product.stock) { 
 
-
-        if (product.quantity === product.product.stock) { // Si el stock y la cantidad necesitada es igual, tenemos que sacar eso del carrito original cliente y pasarlo al ticket
-
-          newListProducts.push(product) // Agregamos los productos que cumplieron las condiciones
+          newListProducts.push(product) 
           amount += product.quantity * product.product.price
           await cartsServices.deleteProductFromCart(cid, (product._id).toHexString())
-          await ProductService.updateProduct(productToUpdate, { stock: 0 }) // Descontamos del stock de la DB
+          await ProductService.updateProduct(productToUpdate, { stock: 0 })
 
 
         } else if (product.quantity <= product.product.stock) {
-
-
-          let newProductQuantity = product.product.stock - product.quantity // Calculamos que es lo que nos queda del stock original
+          let newProductQuantity = product.product.stock - product.quantity 
           amount += product.quantity * product.product.price
-          newListProducts.push(product) // Agregamos los productos que cumplieron las condiciones
-          await ProductService.updateProduct(productToUpdate, { stock: newProductQuantity }) // Descontamos del stock de la DB
+          newListProducts.push(product)
+          await ProductService.updateProduct(productToUpdate, { stock: newProductQuantity }) 
           await cartsServices.deleteProductFromCart(cid, (product._id).toHexString())
-
-
         }
 
       })
@@ -169,38 +146,30 @@ class cartsValidator {
         purchaser: user.user,
         amount: amount,
         code: code
-
       }
 
 
       await cartsServices.purchase(ticket)
-
       console.log(user.phone)
       let unOrderedProducts = await cartsServices.getCartById(cid)
       try {
         client.messages.create({
           body: 'Has realizado una compra',
           from: config.twilio_number,
-          to: user.phone // EN EL TELEFONO SIEMPRE AGREGAR EL PREFIJO +54, SI NO, NO LO VA A TOMARK
+          to: user.phone 
         })
           .catch(e => {
             return e
           })
-        return { ticket: ticket, unOrderedProducts: unOrderedProducts, message: "Los productos no agregados son aquellos que superan las cantidades de stock disponible" };
+        return { ticket: ticket, unOrderedProducts: unOrderedProducts, message: "solo se agregaran los productos con el stock disponible" };
       } catch (error) {
         throw new Error(error)
-
       }
-
 
     } catch (error) {
       throw new error(error)
-
     }
-
   }
-
-
 }
 
 

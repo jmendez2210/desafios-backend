@@ -1,7 +1,6 @@
 
 
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
+/*[ FONT ]*/
 
 @font-face {
   font-family: Poppins-Regular;
@@ -23,8 +22,7 @@
   src: url('../fonts/montserrat/Montserrat-Bold.ttf'); 
 }
 
-/*//////////////////////////////////////////////////////////////////
-[ RESTYLE TAG ]*/
+/*[ RESTYLE TAG ]*/
 
 * {
 	margin: 0px; 
@@ -129,8 +127,7 @@ iframe {
 }
 
 
-/*//////////////////////////////////////////////////////////////////
-[ Utility ]*/
+/*[ Utility ]*/
 .txt1 {
   font-family: Poppins-Regular;
   font-size: 13px;
@@ -146,8 +143,7 @@ iframe {
 }
 
 
-/*//////////////////////////////////////////////////////////////////
-[ login ]*/
+/*[ login ]*/
 
 .limiter {
   width: 100%;

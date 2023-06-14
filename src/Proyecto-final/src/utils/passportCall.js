@@ -13,4 +13,5 @@ const passportCall = strategy => {
   }
 }
 
+
 export default passportCall;

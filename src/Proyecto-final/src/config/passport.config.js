@@ -43,17 +43,10 @@ const initializePassport = () => {
         }
       })
   )
-
-
   passport.use('register', new LocalStrategy(
     { passReqToCallback: true, usernameField: 'email' }, async (req, username, password, done) => {
       const { first_name, last_name, email, age, phone } = req.body;
       let role = "user"
-
-
-
-
-
       try {
         let user = await usersDao.getUserByEmail(email)
         console.log(user)
@@ -63,31 +56,17 @@ const initializePassport = () => {
           return done(null, { message: "Usuario ya existe" })
         }
 
-
-
-
         if (first_name && last_name && email && age && phone) {
 
           const createdUser = new usersDTO(first_name, last_name, email, age, phone, role)
           createdUser.password = createHash(password)
-
-
           let result = await usersDao.createUser(createdUser)
           return done(null, result)
-
         }
-
-
-
-
       } catch (error) {
         done(error)
       }
     }
   ))
-
-
 }
-
-
 export default initializePassport;

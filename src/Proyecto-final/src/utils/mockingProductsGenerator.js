@@ -1,12 +1,10 @@
 import { faker } from '@faker-js/faker';
 
 export default function mockingProductGenerator() {
-
   let mockingProducts = []
 
 
   for (let i = 0; i <= 100; i++) {
-
     mockingProducts.push({
       title: faker.commerce.product(),
       description: faker.commerce.productDescription(),
@@ -17,15 +15,10 @@ export default function mockingProductGenerator() {
       stock: faker.datatype.number(200),
       _id: faker.database.mongodbObjectId()
 
-
     })
-
   }
 
   return mockingProducts
-
-
-
 }
 
 

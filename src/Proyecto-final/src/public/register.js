@@ -9,8 +9,6 @@ document.getElementById("registerForm").addEventListener('submit', async (event)
 
   event.preventDefault()
   console.log("En funcion register")
-
-
   let data = {
     first_name: document.getElementById('firstname').value,
     last_name: document.getElementById('lastname').value,
@@ -20,12 +18,10 @@ document.getElementById("registerForm").addEventListener('submit', async (event)
     email: document.getElementById('email').value,
   }
 
-
-
   if (!data.first_name || !validarCorreoElectronico(data.email) || !data.last_name || !data.email || !data.age || !/\+[0-9]+/i.test(data.phone) || !data.password) {
     iziToast.warning({
       title: "Hey!",
-      message: "Llena los campos necesarios, en el modo que se sugiere"
+      message: "completa los campos necesarios..."
     })
   } else {
     let result;
@@ -66,14 +62,7 @@ document.getElementById("registerForm").addEventListener('submit', async (event)
           })
         }
       })
-
-
   }
-
-
-
-
-
 })
 
 
